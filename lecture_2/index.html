@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Task2 FP</title>
+    <link href="index.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root">
+      <h4>Old table</h4>
+      <table id="old_table"></table>
+      <h4>New table</h4>
+      <table id="new_table"></table>
+      <form id="form">
+        <div class="input_column">
+          <input type="number" placeholder="Old row" name="old_row" required min="0" max="2"/>
+          <input type="number" placeholder="Old column" name="old_column" required min="0" max="2"/>
+        </div>
+        <div class="input_column">
+          <input type="number" placeholder="New row" name="new_row" required min="0" max="2"/>
+          <input type="number" placeholder="New column" name="new_column" required min="0" max="2"/>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
+    <script type="module" src="index.mjs"></script>
+  </body>
+</html>
