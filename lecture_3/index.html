@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Task3 FP</title>
+    <link href="index.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root">
+      <form id="form">
+        <div class="input_column">
+          <input class="input" type="text" placeholder="Title" name="title" required/>
+          <input class="input" type="text" placeholder="Author" name="author" required/>
+          <input class="input" type="text" placeholder="Publishing House" name="publishing_house" required/>
+          <p>Add tags here:</p>
+          <div class="tags_outher_container">
+            <div id="tags_container" class="tags_inner_container">
+            </div>
+            <input id="tags_input" type="text" class="tags_input"/>
+          </div>
+          <span class="help_text">* press spase to add a tag</span>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="filters">
+        <input id="author_filter" type="text" placeholder="Author"/>
+        <input id="tag_filter" type="text" placeholder="Tag"/>
+      </div>
+      <table id="table">
+      </table>
+      <div id="modal" class="modal hidden">
+        <div class="modal_body">
+          <form id="edit_form">
+            <div class="input_column">
+              <input id="edit_title" class="input" type="text" placeholder="Title" name="title" required/>
+              <input id="edit_author" class="input" type="text" placeholder="Author" name="author" required/>
+              <input id="edit_ph" class="input" type="text" placeholder="Publishing House" name="publishing_house" required/>
+              <p>Add tags here:</p>
+              <div class="tags_outher_container">
+                <div id="edit_tags_container" class="tags_inner_container">
+                </div>
+                <input id="edit_tags_input" type="text" class="tags_input"/>
+              </div>
+              <span class="help_text">* press spase to add a tag</span>
+            </div>
+            <div class="buttons_container">
+              <button type="submit">Submit</button>
+              <button id="close_btn" type="button">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/4.1.0/immutable.js" integrity="sha512-mEpDK9uKBzqpxMj+sw19zynhv02ia/OcA7OpFalevu5N8epZi8msLEbBLl2oHXnrvfQ8Tor6dmzE3CFS2uFthA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
+    <script type="module" src="index.mjs"></script>
+  </body>
+</html>
