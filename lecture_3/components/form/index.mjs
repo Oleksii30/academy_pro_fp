@@ -4,7 +4,7 @@ import { initTagsInput } from "../tagsInput/index.mjs";
 
 export const initFormComponent = ({root, addItem, book, handleEditItem}) => {
 
-    let tags = Immutable.List()
+    let tags = book ? Immutable.List(book.tags) : Immutable.List()
 
     let title = book ? book.title : ''
     let author = book ? book.author : ''
@@ -12,28 +12,11 @@ export const initFormComponent = ({root, addItem, book, handleEditItem}) => {
 
     const onTagsChange = (newTags) => {
         tags = newTags
-        //root.innerHTML = ''
         renderFormComponent(root)
-    }
-
-    const setFormValues = (values) => {
-        const titleInput = document.getElementById('edit_title')
-        const authorInput = document.getElementById('edit_author')
-        const phInput = document.getElementById('edit_ph')
-        titleInput.value = values.title
-        authorInput.value = values.author
-        phInput.value = values.publishingHouse
-
-        tags = Immutable.List(values.tags)
-    }
-
-    if(book) {
-        setFormValues(book)
     }
 
     const clearTags = () => {
         tags = Immutable.List()
-        //tagsContainer.innerHTML = ''
     }
 
     const resetForm = () => {
@@ -59,15 +42,14 @@ export const initFormComponent = ({root, addItem, book, handleEditItem}) => {
         if(book) {
             const editValues = {
                 ...book,
-                title:formData.get('title'),
-                author: formData.get('author'),
-                publishingHouse: formData.get('publishing_house'),
+                title: title,
+                author: author,
+                publishingHouse: publishingHouse,
                 tags: tags.toArray(),
             }
 
             handleEditItem(editValues)
             resetForm()
-            //form.removeEventListener('submit', formSubmitHandler)
             return
         }
 
@@ -102,10 +84,12 @@ export const initFormComponent = ({root, addItem, book, handleEditItem}) => {
 
     const renderFormComponent = (container) => {
 
-        let form = document.getElementById('form')
+        const formId = book ? 'edit_form' : 'form'
+
+        let form = document.getElementById(formId)
         if(!form) {
             form = document.createElement('form')
-            form.setAttribute('id', 'form')
+            form.setAttribute('id', formId)
             container.append(form)
         }
 
@@ -129,6 +113,7 @@ export const initFormComponent = ({root, addItem, book, handleEditItem}) => {
         inputsContainer.append(tagsLabel)
         inputsContainer.append(tagsContainer)
         inputsContainer.append(helpText)
+
         const button = document.createElement('button')
         button.setAttribute('type', 'submit')
         button.innerText = 'Submit'
@@ -136,7 +121,7 @@ export const initFormComponent = ({root, addItem, book, handleEditItem}) => {
         form.append(button)
 
         form.onsubmit = formSubmitHandler
-        initTagsInput(tagsContainer, onTagsChange, tags)
+        initTagsInput({container: tagsContainer, onTagsChange, tags})
     }
 
     renderFormComponent(root)

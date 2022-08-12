@@ -51,8 +51,8 @@ export const initMainComponent = (root) => {
 
     const openEditModal = (book) => {
         const modal = document.getElementById('modal')
-        console.log(modal);
-        initModalComponent({modal, book, editItem})
+        const modalBody = document.getElementById('modal_body')
+        initModalComponent({modal, modalBody, book, editItem})
     }
 
     const renderMainComponent = (root) => {

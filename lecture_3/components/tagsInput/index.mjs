@@ -1,6 +1,6 @@
 import { createId } from '../../helpers.mjs'
 
-export const initTagsInput = (container, onTagsChange, tags) => {
+export const initTagsInput = ({container, onTagsChange, tags}) => {
 
     const deleteTagHandler = tagsContainer => id => {
         const newtags = tags.filter(el => el.id !== id)
