@@ -1,5 +1,12 @@
-import { initListComponent } from "./components/main/index.mjs";
+import { initMainComponent } from "./components/main/index.mjs";
 
-const table = document.getElementById('table')
+const root = document.getElementById('root')
+console.log(root);
 
-initListComponent(table)
+initMainComponent(root)
+
+const modal = document.getElementById('modal')
+console.log(modal);
+
+const modalBody = document.getElementById('modal_body')
+console.log(modalBody);

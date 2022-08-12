@@ -1,15 +1,15 @@
 import { initFormComponent } from "../form/index.mjs"
 
 export const initModalComponent = ({modal, book, editItem}) => {
-    modal.classList.remove('hidden')
-    const closeButton = document.getElementById('close_btn')
-    const tagsInput = document.getElementById('edit_tags_input')
-    const tagsContainer = document.getElementById('edit_tags_container')
-    const form = document.getElementById('edit_form')
+    
+    // const closeButton = document.getElementById('close_btn')
+    // const tagsInput = document.getElementById('edit_tags_input')
+    // const tagsContainer = document.getElementById('tags_outher_container_edit')
+    // const form = document.getElementById('edit_form')
 
     const closeHandler = () => {
         modal.classList.add('hidden')
-        closeButton.removeEventListener('click', closeHandler)
+        //closeButton.removeEventListener('click', closeHandler)
     }
 
     const handleEditItem = (values) => {
@@ -17,7 +17,12 @@ export const initModalComponent = ({modal, book, editItem}) => {
         closeHandler()
     }
 
-    initFormComponent({form, tagsInput, tagsContainer, book, handleEditItem})
+    const renderModal = (modal) => {
+        modal.classList.remove('hidden')
+        initFormComponent({root: modal, book, handleEditItem})
+    }
 
-    closeButton.addEventListener('click', closeHandler)
+    renderModal(modal)
+
+    //closeButton.addEventListener('click', closeHandler)
 }
